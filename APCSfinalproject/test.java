@@ -5,7 +5,7 @@ import javax.swing.JButton;
 
 public class test
 {
-    //delete after
+    
 
     private JFrame frame;
 

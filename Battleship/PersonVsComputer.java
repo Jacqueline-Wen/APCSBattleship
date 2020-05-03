@@ -1,7 +1,6 @@
 
 public class PersonVsComputer
 {
-    //asdf
     private boolean [][] person;
     private boolean [][] computer;
     public PersonVsComputer() {

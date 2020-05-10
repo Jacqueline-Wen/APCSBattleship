@@ -14,5 +14,8 @@ public class PersonVsPerson
         
     }
     
+    public void nextTurn() {
+        
+    }
     
 }

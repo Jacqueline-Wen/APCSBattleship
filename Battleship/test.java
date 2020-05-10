@@ -2,10 +2,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JTable;
 
 public class test
 {
     private JFrame frame;
+    private final JTable table = new JTable();
 
     /**
      * Launch the application.
@@ -45,12 +47,14 @@ public class test
     private void initialize()
     {
         frame = new JFrame();
-        frame.setBounds( 100, 100, 450, 300 );
+        frame.setBounds( 100, 100, 1000, 1000 );
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.getContentPane().setLayout(null);
         
         JButton btnNewButton = new JButton("A1");
-        btnNewButton.setBounds(15, 16, 115, 37);
+        btnNewButton.setBounds(0, 0, 100, 100);
         frame.getContentPane().add(btnNewButton);
+        table.setBounds(300, 165, 407, 199);
+        frame.getContentPane().add(table);
     }
 }

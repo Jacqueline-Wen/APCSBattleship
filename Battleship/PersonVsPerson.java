@@ -5,40 +5,50 @@ public class PersonVsPerson
     // 0- nothing, 1- boat exists, 2- miss, 3- hit
     private int [][] person1;
     private int [][] person2;
-    private int person;
+    private boolean person;
     public PersonVsPerson() {
         person1 = new int[10][10];
         person2 = new int[10][10];
-        choose();
+        runningGame();
     }
     
-    public void choose() {
-        System.out.println("Person1, please choose ur location");
-        person = 1;
+    public void runningGame() {
+        System.out.println("Player 1, please choose your location");
+        person = true;
         inputForMap();
-        person = 2;
+        System.out.println("Player 2, please choose your location");
+        person = false;
         inputForMap();
         
+        person = !person;
         while (gameOver() == 0) {
-            guessMove()
+            guessMove(person);
+            person = !person;
+        }
+        if (gameOver() == 1) {
+            System.out.println("Congrats to Player 1!");
+        } else {
+            System.out.println("Congrats to Player 2!");
         }
     }
     
-    private void guessMove(int person) {
+    private void guessMove(boolean person) {
         Scanner in = new Scanner(System.in);
+        System.out.println("Player " + person + " please input your guess");
+
         int rval, cval;
         rval = in.nextInt();
         cval = in.nextInt();
         int curPos = 0;
-        if (person == 1) {
+        if (person) {
             curPos = person1[rval][cval];
         }
-        if (person == 2) {
+        if (!person) {
             curPos = person2[rval][cval];
         }
         
         if (curPos == 0) {
-            if (person == 1) {
+            if (person) {
                 person1[rval][cval] = 2;
             } else {
                 person2[rval][cval] = 2;
@@ -46,16 +56,32 @@ public class PersonVsPerson
         }
         
         if (curPos == 1) {
-            if (person == 1) {
+            if (person) {
                 person1[rval][cval] = 3;
-                guessMove(1);
             } else {
                 person2[rval][cval] = 3;
-                guessMove(2);
             }
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (person) {
+                        System.out.print( person1[i][j] );
+                    } else {
+                        System.out.print( person2[i][j] );
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println();
+            guessMove(person);
         }
+        
+        
     }
     
+    /**
+     * returns whether the game is over
+     * @return 0 if not over, 1 if person 1 wins, 2 if person 2 wins
+     */
     private int gameOver() {
         int person1Val = 0;
         int person2Val = 0;
@@ -87,7 +113,7 @@ public class PersonVsPerson
         //horizontally
         if (direction == 0) {
             for (int i = cval; i < cval + length; i++) {
-                if (person == 1) {
+                if (person) {
                     person1[rval][i] = 1;
                 } else {
                     person2[rval][i] = 1;
@@ -98,12 +124,23 @@ public class PersonVsPerson
         //vertically
         if (direction == 1) {
             for (int i = rval; i < rval + length; i++) {
-                if (person == 1) {
+                if (person) {
                     person1[i][cval] = 1;
                 } else {
                     person2[i][cval] = 1;
                 }
             }
+        }
+        
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (person) {
+                    System.out.print( person1[i][j] + " " );
+                } else {
+                    System.out.print( person2[i][j] + " ");
+                }
+            }
+            System.out.println();
         }
     }
     

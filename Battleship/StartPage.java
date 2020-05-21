@@ -7,6 +7,7 @@ public class StartPage
     {
         System.out.println( "Choose type of game" );
         System.out.println( "For Player vs Player, type 1" );
+        System.out.println( "For Player vs Computer, type 2" );
         Scanner scan = new Scanner( System.in );
         int response = scan.nextInt();
         if ( response == 1 )

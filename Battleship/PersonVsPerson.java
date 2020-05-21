@@ -5,10 +5,22 @@ public class PersonVsPerson
     // 0- nothing, 1- boat exists, 2- miss, 3- hit
     private int [][] person1;
     private int [][] person2;
+    private char [][] person1map;
+    private char[][] person2map;
     private boolean person;
     public PersonVsPerson() {
         person1 = new int[10][10];
         person2 = new int[10][10];
+        person1map = new char[10][10];
+        person2map = new char[10][10];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                person1[i][j] = 0;
+                person2[i][j] = 0;
+                person1map[i][j] = '.';
+                person2map[i][j] = '.';
+            }
+        }
         runningGame();
     }
     
@@ -24,17 +36,38 @@ public class PersonVsPerson
         while (gameOver() == 0) {
             guessMove(person);
             person = !person;
+            for (int i = 0; i < 15; i++) {
+                System.out.println();
+            }
         }
         if (gameOver() == 1) {
             System.out.println("Congrats to Player 1!");
+            return;
         } else {
             System.out.println("Congrats to Player 2!");
+            return;
         }
     }
-    
+   
     private void guessMove(boolean person) {
+        if (person) {
+            System.out.println("Player " + 1 + " please input your guess");
+        } else {
+            System.out.println("Player " + 2 + " please input your guess");
+        }
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (person) {
+                    System.out.print( person1map[i][j] + " " );
+                } else {
+                    System.out.print( person2map[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+        
+        System.out.println();
         Scanner in = new Scanner(System.in);
-        System.out.println("Player " + person + " please input your guess");
 
         int rval, cval;
         rval = in.nextInt();
@@ -50,30 +83,52 @@ public class PersonVsPerson
         if (curPos == 0) {
             if (person) {
                 person1[rval][cval] = 2;
+                person1map[rval][cval] = 'm';
             } else {
                 person2[rval][cval] = 2;
+                person2map[rval][cval] = 'm';
             }
         }
-        
+ 
         if (curPos == 1) {
             if (person) {
                 person1[rval][cval] = 3;
+                person1map[rval][cval] = 'X';
             } else {
                 person2[rval][cval] = 3;
+                person2map[rval][cval] = 'X';
             }
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (person) {
-                        System.out.print( person1[i][j] );
-                    } else {
-                        System.out.print( person2[i][j] );
-                    }
-                }
-                System.out.println();
-            }
-            System.out.println();
+//            for (int i = 0; i < 10; i++) {
+//                for (int j = 0; j < 10; j++) {
+//                    if (person) {
+//                        System.out.print( person1map[i][j] + " " );
+//                    } else {
+//                        System.out.print( person2map[i][j] + " ");
+//                    }
+//                }
+//                System.out.println();
+//            }
+//            
+//            System.out.println();
+            if (gameOver() == 1 || gameOver() == 2) {
+                return;
+            } 
             guessMove(person);
         }
+        
+//        if (gameOver() == 0) {
+//            for (int i = 0; i < 10; i++) {
+//                for (int j = 0; j < 10; j++) {
+//                    if (person) {
+//                        System.out.print( person1map[i][j] + " ");
+//                    } else {
+//                        System.out.print( person2map[i][j] + " ");
+//                    }
+//                }
+//                System.out.println();
+//            }
+//            System.out.println();
+//        }
         
         
     }
@@ -142,6 +197,7 @@ public class PersonVsPerson
             }
             System.out.println();
         }
+        System.out.println();
     }
     
     public void inputForMap() {

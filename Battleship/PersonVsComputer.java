@@ -1,7 +1,12 @@
+import java.util.Random;
+import java.util.Scanner;
 
 public class PersonVsComputer
 {
-    private boolean [][] computer;
+    private int [][] person1;
+    private int [][] computer;
+    private char [][] computerMap;
+    private boolean person;
 
     public PersonVsComputer() {
         person1 = new int[10][10];

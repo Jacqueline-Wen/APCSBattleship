@@ -26,6 +26,7 @@ public class PersonVsPerson
     
     public void runningGame() {
         System.out.println("Player 1, please choose your location");
+        System.out.println("Input: [row number column number direction] with spaces inbetween");
         person = true;
         inputForMap();
         System.out.println("Player 2, please choose your location");

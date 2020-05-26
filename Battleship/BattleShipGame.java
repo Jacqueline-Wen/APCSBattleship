@@ -49,7 +49,7 @@ public class BattleShipGame extends JFrame
             }
         } );
         JButton option2 = new JButton( "Person vs. Computer" );
-        // option2.addActionListener( new PersonVsComputerGUI());
+        //option2.addActionListener( new PersonVsComputerGUI());
         option2.addActionListener( new ActionListener()
         {
             public void actionPerformed( ActionEvent e )

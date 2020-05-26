@@ -26,17 +26,6 @@ public class GameBoard
     private String title;
 
     /**
-     * 
-     * Creates a new GameBoard and allows it to be visible
-     */
-    public void run()
-    {
-        GameBoard window = new GameBoard( title );
-        window.frame.setVisible( true );
-    }
-
-
-    /**
      * Create the application.
      */
     public GameBoard( String name )
@@ -45,6 +34,17 @@ public class GameBoard
         title = name;
         frame.setTitle( name );
 
+    }
+
+
+    /**
+     * 
+     * Creates a new GameBoard and allows it to be visible
+     */
+    public void run()
+    {
+        GameBoard window = new GameBoard( title );
+        window.frame.setVisible( true );
     }
 
 

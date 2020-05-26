@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
+<<<<<<< HEAD
 /**
  *  Creates the person vs computer class
  *
@@ -10,6 +11,20 @@ import java.util.Scanner;
  *  @author  Assignment: Battleship
  *
  *  @author  Sources: None
+=======
+
+/**
+ * 
+ * Creates a new player vs computer game and runs it The player tries to sink
+ * the computer's ships before the computer manages to sink their ships
+ *
+ * @author Jacqueline Wen
+ * @version May 26, 2020
+ * @author Period: 4
+ * @author Assignment: Battleship
+ *
+ * @author Sources: Meghana Muddireddy
+>>>>>>> f2481127de6e973bb808a37946b0e9dfb0ec4e79
  */
 public class PersonVsComputer
 {

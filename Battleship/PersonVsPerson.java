@@ -128,7 +128,7 @@ public class PersonVsPerson
      * returns whether the game is over
      * @return 0 if not over, 1 if person 1 wins, 2 if person 2 wins
      */
-    private int gameOver() {
+    public int gameOver() {
         int person1Val = 0;
         int person2Val = 0;
         for (int i = 0; i < 10; i++) {

@@ -1,46 +1,46 @@
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.*;
 
-public class GUI
+public class GameBoard
 {
 
     private JFrame frame;
-
-    /**
-     * Launch the application.
-     */
-    public static void main( String[] args )
+    
+    private String title;
+    
+    private int shipsSet;
+    
+    private ArrayList<Object> buttons;
+    
+    public void run()
     {
-        EventQueue.invokeLater( new Runnable()
-        {
-            public void run()
-            {
-                try
-                {
-                    GUI window = new GUI();
-                    window.frame.setVisible( true );
-                }
-                catch ( Exception e )
-                {
-                    e.printStackTrace();
-                }
-            }
-        } );
+        GameBoard window = new GameBoard(title);
+        window.frame.setVisible( true );
     }
+    
+    
 
 
     /**
      * Create the application.
      */
-    public GUI()
+    public GameBoard(String name)
     {
         initialize();
+        title = name;
+        frame.setTitle( name );
+        shipsSet = 1;
+    }
+    
+    public void setName(String name)
+    {
+        title = name;
+        frame.setTitle( name );
     }
 
 
@@ -50,11 +50,25 @@ public class GUI
     private void initialize()
     {
         frame = new JFrame();
-        frame.setBounds( 100, 100, 1000, 1000 );
+        frame.setBounds( 80, 80, 640, 640 );
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.getContentPane().setLayout(new GridLayout(10,10));
         
+        
+        
         JButton button = new JButton("A1");
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                if (shipsSet == 1)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        button.setBackground( new Color(165, 42, 42) );
+                    }
+                    shipsSet++;
+                }
+            }
+        });
         button.setForeground(new Color(255, 255, 255));
         button.setBackground(new Color(0, 0, 205));
         frame.getContentPane().add(button);
@@ -481,5 +495,6 @@ public class GUI
         frame.getContentPane().add(button_99);
        
     }
+   
 
 }

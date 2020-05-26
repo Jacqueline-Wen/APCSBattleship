@@ -19,7 +19,7 @@ public class PersonVsComputer
                 computerMap[i][j] = '.';
             }
         }
-        runningGame();
+        //runningGame();
     }
     
     public void runningGame() {
@@ -141,7 +141,7 @@ public class PersonVsComputer
         }
     }
     
-    private void drawMap(int rval, int cval, int length, int direction) {
+    public void drawMap(int rval, int cval, int length, int direction) {
         //horizontally
         if (direction == 0) {
             for (int i = cval; i < cval + length; i++) {
@@ -175,7 +175,7 @@ public class PersonVsComputer
         System.out.println();
     }
     
-    private int gameOver() {
+    public int gameOver() {
         int person1Val = 0;
         int person2Val = 0;
         for (int i = 0; i < 10; i++) {

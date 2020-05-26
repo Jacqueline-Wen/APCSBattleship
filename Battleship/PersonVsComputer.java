@@ -1,6 +1,16 @@
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ *  Creates the person vs computer class
+ *
+ *  @author  Jacqueline Wen
+ *  @version May 25, 2020
+ *  @author  Period: 4
+ *  @author  Assignment: Battleship
+ *
+ *  @author  Sources: None
+ */
 public class PersonVsComputer
 {
     private int [][] person1;

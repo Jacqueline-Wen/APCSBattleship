@@ -15,7 +15,6 @@ import java.util.Scanner;
  * @author Assignment: Battleship
  *
  * @author Sources: Meghana Muddireddy
->>>>>>> f2481127de6e973bb808a37946b0e9dfb0ec4e79
  **/
 
 public class PersonVsComputer

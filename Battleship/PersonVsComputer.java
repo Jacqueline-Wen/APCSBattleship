@@ -2,15 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 <<<<<<< HEAD
-/**
- *  Creates the person vs computer class
- *
- *  @author  Jacqueline Wen
- *  @version May 25, 2020
- *  @author  Period: 4
- *  @author  Assignment: Battleship
- *
- *  @author  Sources: None
 =======
 
 /**
@@ -25,7 +16,8 @@ import java.util.Scanner;
  *
  * @author Sources: Meghana Muddireddy
 >>>>>>> f2481127de6e973bb808a37946b0e9dfb0ec4e79
- */
+ **/
+
 public class PersonVsComputer
 {
     private int[][] person1;
@@ -35,6 +27,7 @@ public class PersonVsComputer
     private char[][] computerMap;
 
     private boolean person;
+
 
     /**
      * Constructor
@@ -61,6 +54,7 @@ public class PersonVsComputer
      * 
      * Sets up the game and makes sure the game is running until the player or
      * computer wins
+     * 
      */
     public void runningGame()
     {
@@ -70,7 +64,6 @@ public class PersonVsComputer
             "Input: [rownumber columnnumber direction] while pressing enter in between" );
         person = true;
         inputForMap();
-        System.out.println( "hi" );
         computerGeneratedMap();
 
         person = !person;
@@ -113,9 +106,10 @@ public class PersonVsComputer
 
     /**
      * 
-     * TODO Write your method description here.
+     * Simulates the player guessing the coordinate
      * 
      * @param person
+     *            whether it is the player guessing
      */
     private void guessMove( boolean person )
     {
@@ -160,8 +154,7 @@ public class PersonVsComputer
                     System.out.println();
                 }
             }
-
-            if ( curPos == 1 )
+            else if ( curPos == 1 )
             {
                 computer[rval][cval] = 3;
                 computerMap[rval][cval] = 'X';
@@ -179,6 +172,13 @@ public class PersonVsComputer
                 }
                 guessMove( person );
             }
+            else if ( curPos == 2 || curPos == 3 )
+            {
+                System.out.println(
+                    "Sorry this location was already chosen, please choose again" );
+                // System.out.println(rval + " " + cval);
+                guessMove( person );
+            }
 
         }
 
@@ -187,14 +187,19 @@ public class PersonVsComputer
 
     /**
      * 
-     * TODO Write your method description here.
+     * simulates the computer guessing a move via a random number generator and
+     * recursive floodfill
      * 
      * @param rval
+     *            row number of location guessed
      * @param cval
+     *            column number of location guessed
      */
     private void guessMoveComputer( int rval, int cval )
     {
         System.out.println( "computer is running for " + rval + " " + cval );
+        System.out.println(
+            "Note: 0 - nothing at spot, 1 - unhit boat at spot, 2 - computer aimed and missed at spot, 3 - computer hit spot" );
         if ( person1[rval][cval] == 0 )
         {
             person1[rval][cval] = 2;
@@ -240,12 +245,16 @@ public class PersonVsComputer
 
     /**
      * 
-     * TODO Write your method description here.
+     * edits the computer used matrix (used as part of input)
      * 
      * @param rval
+     *            row value of start location
      * @param cval
+     *            column value of start location
      * @param length
+     *            length of ship
      * @param direction
+     *            0 - horizontal ship, 1- vertical ship
      */
     public void drawMap( int rval, int cval, int length, int direction )
     {
@@ -298,9 +307,9 @@ public class PersonVsComputer
 
     /**
      * 
-     * TODO Write your method description here.
+     * returns whether the game is over and if so who won
      * 
-     * @return
+     * @return 0 if game not over, 1 if player 1 won, 2 if computer won
      */
     private int gameOver()
     {
@@ -321,12 +330,12 @@ public class PersonVsComputer
             }
         }
 
-        if ( person1Val == 30 )
+        if ( person2Val == 30 )
         {
             return 1;
         }
 
-        if ( person2Val == 30 )
+        if ( person1Val == 30 )
         {
             return 2;
         }
@@ -338,13 +347,17 @@ public class PersonVsComputer
 
     /**
      * 
-     * TODO Write your method description here.
+     * checks if inputed boat value overlaps/ goes out of bounds
      * 
      * @param rval
+     *            row value of inputed boat
      * @param cval
+     *            column value of inputed boat
      * @param direction
+     *            0- horizontal boat, 1- vertical boat
      * @param length
-     * @return
+     *            length of boat inputed
+     * @return true if position works, false if it does not
      */
     private boolean positionWorks(
         int rval,
@@ -386,7 +399,7 @@ public class PersonVsComputer
 
     /**
      * 
-     * TODO Write your method description here.
+     * collects user input for map
      */
     private void inputForMap()
     {
@@ -526,7 +539,7 @@ public class PersonVsComputer
 
     /**
      * 
-     * TODO Write your method description here.
+     * uses computer to generate random map for user to guess
      */
     public void computerGeneratedMap()
     {
@@ -591,13 +604,13 @@ public class PersonVsComputer
             }
         }
 
-        for ( int i = 0; i < 10; i++ )
-        {
-            for ( int j = 0; j < 10; j++ )
-            {
-                System.out.print( computer[i][j] );
-            }
-            System.out.println();
-        }
+        // for ( int i = 0; i < 10; i++ )
+        // {
+        // for ( int j = 0; j < 10; j++ )
+        // {
+        // System.out.print( computer[i][j] );
+        // }
+        // System.out.println();
+        // }
     }
 }

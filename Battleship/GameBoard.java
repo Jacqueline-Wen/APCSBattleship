@@ -18,12 +18,15 @@ import java.awt.event.ActionEvent;
  *
  * @author Sources: none
  */
+
+// CLASS NOT USED
 public class GameBoard
 {
 
     private JFrame frame;
 
     private String title;
+
 
     /**
      * 

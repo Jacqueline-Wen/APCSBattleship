@@ -26,6 +26,7 @@ public class PersonVsPerson
 
     private boolean person;
 
+
     /**
      * Constructer
      */
@@ -85,7 +86,23 @@ public class PersonVsPerson
                 }
                 System.out.println();
             }
+            if ( gameOver() == 1 )
+            {
+                System.out.println( "Congrats to Player 1!" );
+                System.out.println();
+
+                return;
+            }
+            else if ( gameOver() == 2 )
+            {
+                System.out.println( "Congrats to Player 2!" );
+                System.out.println();
+
+                return;
+            }
+
             person = !person;
+
             System.out
                 .println( "Sorry, this coordinate did not hit a battleship" );
             for ( int i = 0; i < 15; i++ )
@@ -96,11 +113,14 @@ public class PersonVsPerson
         if ( gameOver() == 1 )
         {
             System.out.println( "Congrats to Player 1!" );
+            System.out.println();
             return;
         }
         else
         {
             System.out.println( "Congrats to Player 2!" );
+            System.out.println();
+
             return;
         }
     }
@@ -108,9 +128,10 @@ public class PersonVsPerson
 
     /**
      * 
-     * TODO Write your method description here.
+     * Simulates a player guessing a location.
      * 
      * @param person
+     *            player who is guessing
      */
     private void guessMove( boolean person )
     {
@@ -156,6 +177,7 @@ public class PersonVsPerson
                 "Column number not valid. Please enter another column number" );
             cval = in.nextInt();
         }
+
         int curPos = 0;
         if ( person )
         {
@@ -179,8 +201,7 @@ public class PersonVsPerson
                 person2map[rval][cval] = 'm';
             }
         }
-
-        if ( curPos == 1 )
+        else if ( curPos == 1 )
         {
             if ( person )
             {
@@ -196,6 +217,12 @@ public class PersonVsPerson
             {
                 return;
             }
+            guessMove( person );
+        }
+        else if ( curPos == 2 || curPos == 3 )
+        {
+            System.out.println(
+                "Sorry this location was already chosen, please choose again" );
             guessMove( person );
         }
     }
@@ -241,13 +268,17 @@ public class PersonVsPerson
 
     /**
      * 
-     * TODO Write your method description here.
+     * checks if inputed boat value overlaps/ goes out of bounds
      * 
      * @param rval
+     *            row value of inputed boat
      * @param cval
+     *            column value of inputed boat
      * @param direction
+     *            0- horizontal boat, 1- vertical boat
      * @param length
-     * @return
+     *            length of boat inputed
+     * @return true if position works, false if it does not
      */
     private boolean positionWorks(
         int rval,
@@ -357,8 +388,7 @@ public class PersonVsPerson
 
     /**
      * 
-     * Makes sure the input values that the player in trying to choose for ship
-     * locations are valid
+     * Collects user input for map
      */
     public void inputForMap()
     {

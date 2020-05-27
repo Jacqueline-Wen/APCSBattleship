@@ -25,6 +25,7 @@ public class BattleShipGame extends JFrame
 
     private JTextArea display;
 
+
     /**
      * Constructor
      */
@@ -77,6 +78,7 @@ public class BattleShipGame extends JFrame
         window.setResizable( false );
         window.setVisible( true );
     }
+
 
     // ****************************************************************************************
 

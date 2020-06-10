@@ -196,7 +196,7 @@ public class PersonVsComputer
     {
         System.out.println( "computer is running for " + rval + " " + cval );
         System.out.println(
-            "Note: 0 - nothing at spot, 1 - unhit boat at spot, 2 - computer aimed and missed at spot, 3 - computer hit spot" );
+            "Note: 0 - nothing at spot, 1 - boat at spot, 2 - computer aimed and missed at spot, 3 - computer hit boat at spot" );
         if ( person1[rval][cval] == 0 )
         {
             person1[rval][cval] = 2;
